@@ -1,0 +1,25 @@
+plugins {
+    id("java")
+}
+
+group = "com.nostromo"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'junit:junit:4.13.2'
+    testImplementation(platform("org.junit:junit-bom:5.9.1"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.13.0'
+}
+
+test {
+    maxParallelForks = 10
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
