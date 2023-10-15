@@ -34,10 +34,28 @@ public class ConfigFileReader {
         else throw new RuntimeException("chromeDriverPath not specified in the Configuration.properties file.");
     }
 
+    public String getFirefoxDriverPath(){
+        String driverPath = properties.getProperty("firefoxDriverPath");
+        if(driverPath!= null) return driverPath;
+        else throw new RuntimeException("firefoxDriverPath not specified in the Configuration.properties file.");
+    }
+
     public long getImplicitlyWait() {
         String implicitlyWait = properties.getProperty("implicitlyWait");
         if(implicitlyWait != null) return Long.parseLong(implicitlyWait);
         else throw new RuntimeException("implicitlyWait not specified in the Configuration.properties file.");
+    }
+
+    public String getAdminUsername() {
+        String adminUsername = properties.getProperty("adminUsername");
+        if(adminUsername != null) return adminUsername;
+        else throw new RuntimeException("adminUsername not specified in the Configuration.properties file.");
+    }
+
+    public String getAdminPassword() {
+        String adminPassword = properties.getProperty("adminPassword");
+        if(adminPassword != null) return adminPassword;
+        else throw new RuntimeException("adminPassword not specified in the Configuration.properties file.");
     }
 
     public String getApplicationEndpoint() {

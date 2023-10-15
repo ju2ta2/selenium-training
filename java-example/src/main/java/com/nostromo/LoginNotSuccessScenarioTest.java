@@ -10,7 +10,7 @@ public class LoginNotSuccessScenarioTest extends BaseTest {
     @Test
     public void test01AlertForInvalidUserName() {
         String invalidUser = "invalidUser";
-        String validPassword = "SunPower";
+        String validPassword = configFileReader.getAdminPassword();
 
         driver.navigate().to(configFileReader.getApplicationEndpoint() + "litecart/admin");
         driver.manage().window().maximize();
@@ -25,7 +25,7 @@ public class LoginNotSuccessScenarioTest extends BaseTest {
     @Test
     public void test02AlertForInvalidPassword() {
 
-        String validUser = "admin";
+        String validUser = configFileReader.getAdminUsername();
         String invalidPassword = "invalidPassword";
 
         driver.navigate().to(configFileReader.getApplicationEndpoint() + "litecart/admin");

@@ -35,7 +35,7 @@ public class BaseTest {
         driver = new ChromeDriver();
 //        driver = new FirefoxDriver(options);
 //        driver = new EdgeDriver();
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(configFileReader.getImplicitlyWait()));
         tlDriver.set(driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
