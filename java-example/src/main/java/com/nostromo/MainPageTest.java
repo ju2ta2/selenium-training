@@ -9,7 +9,7 @@ public class MainPageTest extends BaseTest {
 
     @Test
     public void test01CheckThatEachProductHasSticker() {
-        driver.navigate().to("http://localhost/litecart");
+        driver.navigate().to(configFileReader.getApplicationEndpoint() + "litecart");
         driver.manage().window().maximize();
 
         // Accept cookies

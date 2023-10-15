@@ -12,7 +12,7 @@ public class LoginNotSuccessScenarioTest extends BaseTest {
         String invalidUser = "invalidUser";
         String validPassword = "SunPower";
 
-        driver.navigate().to("http://localhost/litecart/admin");
+        driver.navigate().to(configFileReader.getApplicationEndpoint() + "litecart/admin");
         driver.manage().window().maximize();
 
         driver.findElement(By.name("username")).sendKeys(invalidUser);
@@ -28,7 +28,7 @@ public class LoginNotSuccessScenarioTest extends BaseTest {
         String validUser = "admin";
         String invalidPassword = "invalidPassword";
 
-        driver.navigate().to("http://localhost/litecart/admin");
+        driver.navigate().to(configFileReader.getApplicationEndpoint() + "litecart/admin");
         driver.manage().window().maximize();
 
         driver.findElement(By.name("username")).sendKeys(validUser);

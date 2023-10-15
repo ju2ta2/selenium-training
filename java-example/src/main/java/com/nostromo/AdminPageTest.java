@@ -1,5 +1,6 @@
 package com.nostromo;
 
+import com.nostromo.dataProviders.ConfigFileReader;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.junit.runners.MethodSorters;
@@ -10,7 +11,7 @@ public class AdminPageTest extends BaseTest {
 
     @Test
     public void test01SuccessScenario() {
-        driver.navigate().to("http://localhost/litecart/admin");
+        driver.navigate().to(configFileReader.getApplicationEndpoint() + "litecart/admin");
         driver.manage().window().maximize();
         driver.findElement(By.name("username")).sendKeys("admin");
         driver.findElement(By.name("password")).sendKeys("SunPower");
@@ -35,7 +36,7 @@ public class AdminPageTest extends BaseTest {
         driver.findElement(By.cssSelector("[data-id=delivery_statuses]")).click();
         driver.findElement(By.cssSelector("[data-id=sold_out_statuses]")).click();
         driver.findElement(By.cssSelector("[data-id=quantity_units]")).click();
-        driver.findElement(By.cssSelector("[href='http://localhost/litecart/admin/?app=catalog&doc=csv']")).click();
+        driver.findElement(By.cssSelector("[href*='litecart/admin/?app=catalog&doc=csv']")).click();
 
         //Verification of Countries menu items clickable
         driver.findElement(By.cssSelector("[title=Countries]")).click();
@@ -46,11 +47,11 @@ public class AdminPageTest extends BaseTest {
         //Verification of Customers menu items clickable
         driver.findElement(By.cssSelector("[title=Customers]")).click();
         driver.findElement(By.cssSelector("[data-id=customers]")).click();
-        driver.findElement(By.cssSelector("[href='http://localhost/litecart/admin/?app=customers&doc=csv']")).click();
+        driver.findElement(By.cssSelector("[href*='litecart/admin/?app=customers&doc=csv']")).click();
         driver.findElement(By.cssSelector("[data-id=newsletter_recipients]")).click();
 
         //Verification of Geo Zones menu items clickable
-        driver.findElement(By.cssSelector("[href='http://localhost/litecart/admin/?app=geo_zones&doc=geo_zones']")).click();
+        driver.findElement(By.cssSelector("[href*='litecart/admin/?app=geo_zones&doc=geo_zones']")).click();
 
         //Verification of Languages menu items clickable
         driver.findElement(By.cssSelector("[title=Languages]")).click();
@@ -74,7 +75,7 @@ public class AdminPageTest extends BaseTest {
         //Verification of Pages menu items clickable
         driver.findElement(By.cssSelector("[title=Pages]")).click();
         driver.findElement(By.cssSelector("[data-id=pages]")).click();
-        driver.findElement(By.cssSelector("[href='http://localhost/litecart/admin/?app=pages&doc=csv']")).click();
+        driver.findElement(By.cssSelector("[href*='litecart/admin/?app=pages&doc=csv']")).click();
 
         //Verification of Reports menu items clickable
         driver.findElement(By.cssSelector("[title=Reports]")).click();
@@ -107,12 +108,12 @@ public class AdminPageTest extends BaseTest {
         driver.findElement(By.cssSelector("[title=Translations]")).click();
         driver.findElement(By.cssSelector("[data-id=search]")).click();
         driver.findElement(By.cssSelector("[data-id=scan]")).click();
-        driver.findElement(By.cssSelector("[href='http://localhost/litecart/admin/?app=translations&doc=csv']")).click();
+        driver.findElement(By.cssSelector("[href*='litecart/admin/?app=translations&doc=csv']")).click();
 
         //Verification of Users menu items clickable
         driver.findElement(By.cssSelector("[title=Users]")).click();
 
         //Verification of vMods™ menu items clickable
-        driver.findElement(By.cssSelector("[href='http://localhost/litecart/admin/?app=vmods&doc=vmods']")).click();
+        driver.findElement(By.cssSelector("[href*='litecart/admin/?app=vmods&doc=vmods']")).click();
     }
 }

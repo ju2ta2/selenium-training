@@ -16,7 +16,7 @@ public class CountriesPageTest extends BaseTest {
 
     @Test
     public void test01Login() {
-        driver.navigate().to("http://localhost/litecart/admin");
+        driver.navigate().to(configFileReader.getApplicationEndpoint() + "litecart/admin");
         driver.manage().window().maximize();
         driver.findElement(By.name("username")).sendKeys("admin");
         driver.findElement(By.name("password")).sendKeys("SunPower");

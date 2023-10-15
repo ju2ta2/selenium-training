@@ -1,5 +1,6 @@
 package com.nostromo;
 
+import com.nostromo.dataProviders.ConfigFileReader;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.By;
@@ -20,6 +21,7 @@ public class BaseTest {
     public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
     public WebDriver driver;
     public WebDriverWait wait;
+    ConfigFileReader configFileReader = new ConfigFileReader();
 
     @Before
     public void start() {
