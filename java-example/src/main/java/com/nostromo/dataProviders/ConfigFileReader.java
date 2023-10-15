@@ -7,12 +7,12 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigFileReader {
-    private Properties properties;
-    private final String propertyFilePath= "configs//Configuration.properties";
+    private final Properties properties;
 
 
     public ConfigFileReader(){
         BufferedReader reader;
+        String propertyFilePath = "configs//Configuration.properties";
         try {
             reader = new BufferedReader(new FileReader(propertyFilePath));
             properties = new Properties();

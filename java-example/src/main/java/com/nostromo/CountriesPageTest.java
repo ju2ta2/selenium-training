@@ -33,14 +33,19 @@ public class CountriesPageTest extends BaseTest {
 
     @Test
     public void test03ZonesListAlphabeticallyOrder() {
-        for (int i = 0; i < driver.findElements(By.cssSelector("[class=link]")).size(); i++) {
-            WebElement listElement = driver.findElements(By.cssSelector("[class=link]")).get(i);
-            String zoneValue = listElement.findElement(By.cssSelector("[a class=text-center]")).getAttribute("textContent");
-            if(Integer.valueOf(zoneValue) != 0) {
-                String country = driver.findElements(By.cssSelector("[class=link]")).get(i).getAttribute("textContent");
-                driver.findElement(By.linkText(country)).click();
-                driver.findElement(By.xpath(".//*[@id='myTable']//td[contains(.,'You have transferred')]"));
-//                countriesWithZonesList.add(driver.findElements(By.cssSelector("[class=link]")).get(i).getAttribute("textContent"));
+        List zoneCountriesList = new ArrayList<String>();
+        for (int i = 0; i < driver.findElements(By.xpath("//a[@class='link']")).size(); i++) {
+            WebElement listElement = driver.findElements(By.xpath("//a[@class='link']")).get(i);
+            WebElement zoneCountElement = listElement.findElement(By.xpath("//td[@class='text-center']"));
+            String zoneValue = zoneCountElement.getAttribute("textContent");
+            String countryName = listElement.getAttribute("textContent");
+            if(Integer.parseInt(zoneValue) != 0) {
+                listElement.click();
+                int zonesCount = driver.findElements(By.cssSelector("[class='table table-striped table-hover data-table'] [name$='[name]']")).size();
+                for (int j = 0; j < zonesCount; j++) {
+                    zoneCountriesList.add(driver.findElement(By.cssSelector("[class='table table-striped table-hover data-table'] [name$='[name]']")).getAttribute("value"));
+                }
+                isListOrdered(zoneCountriesList);
             }
         }
     }

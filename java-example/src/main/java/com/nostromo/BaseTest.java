@@ -11,9 +11,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
+import static java.util.Collections.*;
 import static org.junit.Assert.assertEquals;
 
 public class BaseTest {
@@ -60,9 +60,9 @@ public class BaseTest {
     }
 
     public void isListOrdered(List actualList) {
-        List orderedList = new ArrayList<>(actualList);
+        ArrayList orderedList = new ArrayList<>(actualList);
 
-        Collections.sort(orderedList);
+        sort(orderedList);
         for (int i = 0; i < actualList.size(); i++) {
             assertEquals(actualList.get(i), orderedList.get(i));
         }
