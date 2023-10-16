@@ -40,6 +40,12 @@ public class ConfigFileReader {
         else throw new RuntimeException("firefoxDriverPath not specified in the Configuration.properties file.");
     }
 
+    public String getEdgeDriverPath(){
+        String driverPath = properties.getProperty("edgeDriverPath");
+        if(driverPath!= null) return driverPath;
+        else throw new RuntimeException("edgeDriverPath not specified in the Configuration.properties file.");
+    }
+
     public long getImplicitlyWait() {
         String implicitlyWait = properties.getProperty("implicitlyWait");
         if(implicitlyWait != null) return Long.parseLong(implicitlyWait);
