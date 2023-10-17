@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -38,6 +39,7 @@ public class BaseTest {
 //        driver = new FirefoxDriver(options);
 //        driver = new FirefoxDriver();
 //        driver = new EdgeDriver();
+//        driver = new SafariDriver();
 //        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(configFileReader.getImplicitlyWait()));
         tlDriver.set(driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -68,6 +70,9 @@ public class BaseTest {
         sort(orderedList);
         for (int i = 0; i < actualList.size(); i++) {
             assertEquals(actualList.get(i), orderedList.get(i));
+            if(actualList.get(i).equals("") || actualList.get(i) == null) {
+                System.out.println(actualList.get(i));
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -56,21 +57,21 @@ public class ProductCorrectnessVerificationTest extends BaseTest {
         assertEquals(mainPageDiscountPrice, productPageDiscountPrice);
 
         // Price CSS verification
-        if(driver instanceof ChromeDriver || driver instanceof EdgeDriver) {
+        if(driver instanceof ChromeDriver || driver instanceof EdgeDriver || driver instanceof SafariDriver) {
             assertEquals(mainPageRegularPriceColor, "rgba(34, 34, 34, 1)");
         } else if (driver instanceof FirefoxDriver) {
             assertEquals(mainPageRegularPriceColor, "rgb(34, 34, 34)");
         }
         assertEquals(mainPageRegularPriceColor, productPageRegularPriceColor);
 
-        if(driver instanceof ChromeDriver || driver instanceof EdgeDriver) {
+        if(driver instanceof ChromeDriver || driver instanceof EdgeDriver || driver instanceof SafariDriver) {
             assertEquals(mainPageDiscountPriceColor, "rgba(204, 0, 0, 1)");
         } else if (driver instanceof FirefoxDriver) {
             assertEquals(mainPageDiscountPriceColor, "rgb(204, 0, 0)");
         }
         assertEquals(mainPageDiscountPriceColor, productPageDiscountPriceColor);
 
-        if(driver instanceof ChromeDriver || driver instanceof EdgeDriver) {
+        if(driver instanceof ChromeDriver || driver instanceof EdgeDriver || driver instanceof SafariDriver) {
             assertEquals(mainPageRegularPriceStripe, "line-through solid rgb(34, 34, 34)");
         } else if (driver instanceof FirefoxDriver) {
             assertEquals(mainPageRegularPriceStripe, "line-through rgb(34, 34, 34)");
