@@ -1,10 +1,12 @@
 package com.nostromo;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 
 import static org.junit.Assert.assertEquals;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MainPageTest extends BaseTest {
 
     @Test

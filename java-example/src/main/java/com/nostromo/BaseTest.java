@@ -70,8 +70,10 @@ public class BaseTest {
         sort(orderedList);
         for (int i = 0; i < actualList.size(); i++) {
             assertEquals(actualList.get(i), orderedList.get(i));
-            if(actualList.get(i).equals("") || actualList.get(i) == null) {
-                System.out.println(actualList.get(i));
+            if(actualList.get(i).equals("")) {
+                System.out.printf("Element %d has empty value\n", i);
+            } else if(actualList.get(i) == null) {
+                System.out.printf("Element %d has value null\n", i);
             }
         }
     }

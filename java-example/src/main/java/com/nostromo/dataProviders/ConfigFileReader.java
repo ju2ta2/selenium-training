@@ -70,4 +70,15 @@ public class ConfigFileReader {
         else throw new RuntimeException("endpoint not specified in the Configuration.properties file.");
     }
 
+    public String getCustomerEmail() {
+        String customerEmail = properties.getProperty("customerEmail");
+        if(customerEmail != null) return customerEmail;
+        else throw new RuntimeException("customerEmail not specified in the Configuration.properties file.");
+    }
+
+    public String getCustomerPassword() {
+        String customerPassword = properties.getProperty("customerPassword");
+        if(customerPassword != null) return customerPassword;
+        else throw new RuntimeException("customerPassword not specified in the Configuration.properties file.");
+    }
 }

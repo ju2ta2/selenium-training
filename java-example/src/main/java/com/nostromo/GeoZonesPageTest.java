@@ -1,6 +1,8 @@
 package com.nostromo;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GeoZonesPageTest extends BaseTest{
     @Test
     public void test01Login() {
@@ -47,11 +49,12 @@ public class GeoZonesPageTest extends BaseTest{
         for (int i = 0; i < zonesSize; i++) {
             zonesTable.findElements(By.xpath("//a[@class='link']")).get(i).click();
             WebElement countryTable = driver.findElement(By.cssSelector("table[class='table table-striped table-hover data-table']"));
-            int countrySize =countryTable.findElements(By.cssSelector("input[name$='[country_code]']")).size();
+            int countrySize =countryTable.findElements(By.cssSelector("td input[name$='[country_code]']")).size();
             List countriesList = new ArrayList<String>();
             for (int j = 0; j < countrySize; j++) {
                 //TODO get country name
-                countriesList.add(countryTable.findElements(By.cssSelector("input[name$='[country_code]']")).get(j).getAccessibleName());
+                WebElement country = countryTable.findElements(By.cssSelector("td input[name$='[country_code]']")).get(j);
+                countriesList.add(country.getText());
             }
             isListOrdered(countriesList);
         }
