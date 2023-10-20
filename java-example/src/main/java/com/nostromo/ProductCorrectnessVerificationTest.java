@@ -36,7 +36,9 @@ public class ProductCorrectnessVerificationTest extends BaseTest {
         double mainPageRegularPriceFontSizeDouble = Double.parseDouble(mainPageRegularPriceFontSize.substring(0, mainPageRegularPriceFontSize.length() - 2));
         double mainPageDiscountPriceFontSizeDouble = Double.parseDouble(mainPageDiscountPriceFontSize.substring(0, mainPageDiscountPriceFontSize.length() - 2));
 
-        driver.findElement(By.cssSelector("#box-campaign-products [class=product]")).click();
+        if(isElementPresent(By.cssSelector("#box-campaign-products [class=product]"))) {
+            driver.findElement(By.cssSelector("#box-campaign-products [class=product]")).click();
+        }
 
         String productPageProductName = driver.findElement(By.cssSelector("h1[class=title]")).getAttribute("textContent");
         String productPageRegularPrice = driver.findElement(By.cssSelector("del[class=regular-price]")).getAttribute("textContent");

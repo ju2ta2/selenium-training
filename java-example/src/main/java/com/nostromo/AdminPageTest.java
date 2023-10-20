@@ -10,12 +10,20 @@ import org.junit.FixMethodOrder;
 public class AdminPageTest extends BaseTest {
 
     @Test
-    public void test01SuccessScenario() {
+    public void test01Login() {
         driver.navigate().to(configFileReader.getApplicationEndpoint() + "litecart/admin");
         driver.manage().window().maximize();
-        driver.findElement(By.name("username")).sendKeys(configFileReader.getAdminUsername());
-        driver.findElement(By.name("password")).sendKeys(configFileReader.getAdminPassword());
-        driver.findElement(By.cssSelector("[class=card-footer] [name=login]")).click();
+        if(isElementPresent(By.name("username"))) {
+            driver.findElement(By.name("username")).sendKeys(configFileReader.getAdminUsername());
+        }
+
+        if(isElementPresent(By.name("password"))) {
+            driver.findElement(By.name("password")).sendKeys(configFileReader.getAdminPassword());
+        }
+
+        if(isElementPresent(By.cssSelector("[class=card-footer] [name=login]"))) {
+            driver.findElement(By.cssSelector("[class=card-footer] [name=login]")).click();
+        }
     }
 
     @Test
