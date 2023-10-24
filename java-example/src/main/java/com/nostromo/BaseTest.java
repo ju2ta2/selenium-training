@@ -6,10 +6,12 @@ import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -30,7 +32,7 @@ public class BaseTest {
     public void start() {
         if (tlDriver.get() != null) {
             driver = tlDriver.get();
-            wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             return;
         }
 //        FirefoxOptions options = new FirefoxOptions();
@@ -40,9 +42,9 @@ public class BaseTest {
 //        driver = new FirefoxDriver();
 //        driver = new EdgeDriver();
 //        driver = new SafariDriver();
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(configFileReader.getImplicitlyWait()));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(configFileReader.getImplicitlyWait()));
         tlDriver.set(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 //        Runtime.getRuntime().addShutdownHook(
 //                new Thread(() -> { driver.quit(); driver = null;} )
@@ -62,6 +64,20 @@ public class BaseTest {
         } catch (TimeoutException ex) {
             return false;
         }
+    }
+
+    public void clickWhenClickable(By locator) {
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        element.click();
+    }
+
+    public void clickWhenClickable(WebElement webElement) {
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(webElement));
+        element.click();
+    }
+
+    public void isClickable(By locator) {
+        wait.until(d -> ExpectedConditions.elementToBeClickable(locator));
     }
 
     public void isListOrdered(List actualList) {
